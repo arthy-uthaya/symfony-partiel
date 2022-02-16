@@ -32,5 +32,31 @@ class MemoController extends AbstractController
         ]);
     }
 
+        /**
+     * @Route("/memo/{id}", name="memo.add", methods={"GET", "POST"})
+     * @IsGranted("ROLE_USER")
+     * @return Response
+     */
+    public function new(Request $request): Response
+    {
+        $memo = new Memo();
+        $form = $this->createForm(MemoType::class, $memo);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($memo);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Le mémo a bien été ajotuée.');
+            return $this->redirectToRoute('memo');
+        }
+
+        return $this->render('category/new.html.twig', [
+            'category'=>$memo,
+            'form'=>$form->createView()
+        ]);
+    }
+
 
 }
