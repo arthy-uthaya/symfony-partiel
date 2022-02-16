@@ -16,7 +16,8 @@ class AppFixtures extends Fixture
 
         for($e=0;$e<11;$e++){
             $memo = new Memo();
-            $memo->setContenu($faker->contenue);
+            $memo->setContenu($faker->text);
+            $memo->setContenu($faker->numberBetween($int1=1, $int2=180));
 
             $manager->persist($memo);
         }
