@@ -32,30 +32,5 @@ class MemoController extends AbstractController
         ]);
     }
 
-    // /**
-    //  * @Route("/", name="memo.test", methods={"GET", "POST"})
-    //  * @IsGranted("ROLE_USER")
-    //  * @return Response
-    //  */
-    
-    //  public function new(Request $request): Response
-    // {
-    //     $category = new Category();
-    //     $form = $this->createForm(CategoryType::class, $category);
-    //     $form->handleRequest($request);
 
-    //     if($form->isSubmitted() && $form->isValid()) {
-    //         $entityManager = $this->getDoctrine()->getManager();
-    //         $entityManager->persist($category);
-    //         $entityManager->flush();
-
-    //         $this->addFlash('success', 'La catégorie a bien été ajotuée.');
-    //         return $this->redirectToRoute('category');
-    //     }
-
-    //     return $this->render('category/new.html.twig', [
-    //         'category'=>$category,
-    //         'form'=>$form->createView()
-    //     ]);
-    // }
 }
